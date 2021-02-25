@@ -1,0 +1,26 @@
+C12P
+|--C12P
+|==|--__init__.py
+|==|--settings.py
+|==|--wsgi.py
+|==|--urls.py
+|
+|--GoCabs
+|==|--migrations
+|==|--__init__.py
+|==|--admin.py
+|==|--apps.py
+|==|--forms.py
+|==|--models.py
+|==|--view.py
+|==|--urls.py
+|==|--test.py
+|
+|--statics
+|==|--Static files for web pages
+|
+|--templates
+|==|--Html pages
+|
+|--data.txt
+|--manage.py

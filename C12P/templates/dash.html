@@ -1,0 +1,303 @@
+﻿<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	{% load staticfiles %}
+
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static "Dash/img/fav.png" %}">
+	<!-- Author Meta -->
+	<meta name="author" content="colorlib">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>Taxi</title>
+
+
+	<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+	<!--
+			CSS
+			============================================= -->
+	<link rel="stylesheet" href="{% static "Dash/css/linearicons.css" %}">
+	<link rel="stylesheet" href="{% static "Dash/css/font-awesome.min.css" %}">
+	<link rel="stylesheet" href="{% static "Dash/css/bootstrap.css" %}">
+	<link rel="stylesheet" href="{% static "Dash/css/magnific-popup.css" %}">
+	<link rel="stylesheet" href="{% static "Dash/css/nice-select.css" %}">
+	<link rel="stylesheet" href="{% static "Dash/css/animate.min.css" %}">
+	<link rel="stylesheet" href="{% static "Dash/css/jquery-ui.css" %}">
+	<link rel="stylesheet" href="{% static "Dash/css/main.css" %}">
+</head>
+
+<body>
+	<header id="header">
+
+		<div class="container main-menu">
+			<div class="row align-items-center justify-content-between d-flex">
+				<a href="../"><img src="{% static "Dash/img/logo.png" %}" alt="" title="" /></a>
+				<nav id="nav-menu-container">
+					<ul class="nav-menu">
+						<li class="menu-active"><a href="../rides">Rides</a></li>
+						<li class="menu-active"><a href="../reviews">Reviews</a></li>
+						<li class="menu-active"><a href="#">{{Usr}}</a></li>						
+						<li class="menu-active"><a href="{% url "GoCabs:index"%}">Logout</a></li>
+
+					</ul>
+				</nav><!-- #nav-menu-container -->
+			</div>
+		</div>
+	</header><!-- #header -->
+
+	<!-- start banner Area -->
+	<section class="banner-area relative" id="home">
+		<div class="overlay overlay-bg"></div>
+		<div class="container">
+			<div class="row fullscreen d-flex align-items-center justify-content-between">
+				<div class="banner-content col-lg-6 col-md-6 ">
+					<h6 class="text-white ">Need a ride? just call</h6>
+					<h1 class="text-uppercase">
+						911 999 911
+					</h1>
+					<p class="pt-10 pb-10 text-white">
+						Whether you enjoy city breaks or extended holidays in the sun, you can always improve your
+						travel experiences through the means of our services.
+					</p>
+					<a href="#" class="primary-btn text-uppercase">Call for taxi</a>
+				</div>
+				<div class="col-lg-4  col-md-6 header-right">
+					<h4 class="pb-30">Book Your Taxi Online!</h4>
+					<form class="form" method="POST">
+					{% csrf_token %}
+						<div class="from-group">
+							<input class="form-control txt-field" type="text" name="name" placeholder="Your name"
+								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your name'">
+							<input class="form-control txt-field" type="tel" name="phone" placeholder="Phone number"
+								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Phone number'">
+							<input class="form-control txt-field" type="text" name="source" placeholder="Source"
+								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Source'">
+							<input class="form-control txt-field" type="text" name="destination"
+								placeholder="Destination" onfocus="this.placeholder = ''"
+								onblur="this.placeholder = 'Destination'">
+								<div id="time_selection" class="select-2 time_selection">
+									<select class="form-control time-selection" onChange="refresh_fares();"
+										name="zone">
+	
+										<option class="extra-black">North</option>
+										<option class="extra-black">South</option>
+										<option class="extra-black">East</option>
+										<option class="extra-black">West</option>
+										<option class="extra-black">Central</option>
+									</select>
+								</div>
+
+								<p>
+								</p>
+
+							<div id="time_selection" class="select-2 time_selection">
+								<select class="form-control time-selection" onChange="refresh_fares();"
+									name="time">
+
+									<option class="extra-black">12:00AM</option>
+									<option class="extra-black">12:30AM</option>
+									<option class="extra-black">01:00AM</option>
+									<option class="extra-black">01:30AM</option>
+									<option class="extra-black">02:00AM</option>
+									<option class="extra-black">02:30AM</option>
+									<option class="extra-black">03:00AM</option>
+									<option class="extra-black">03:30AM</option>
+									<option class="extra-black">04:00AM</option>
+									<option class="extra-black">04:30AM</option>
+									<option class="extra-black">05:00AM</option>
+									<option class="extra-black">05:30AM</option>
+									<option class="extra-black">06:00AM</option>
+									<option class="extra-black">06:30AM</option>
+									<option class="extra-black">07:00AM</option>
+									<option class="extra-black">07:30AM</option>
+									<option class="extra-black">08:00AM</option>
+									<option class="extra-black">08:30AM</option>
+									<option class="extra-black">09:00AM</option>
+									<option class="extra-black">09:30AM</option>
+									<option class="extra-black">10:00AM</option>
+									<option class="extra-black">10:30AM</option>
+									<option class="extra-black">11:00AM</option>
+									<option class="extra-black">11:30AM</option>
+									<option class="extra-black">12:00PM</option>
+									<option class="extra-black">12:30PM</option>
+									<option class="extra-black">01:00PM</option>
+									<option class="extra-black">01:30PM</option>
+									<option class="extra-black">02:00PM</option>
+									<option class="extra-black">02:30PM</option>
+									<option class="extra-black">03:00PM</option>
+									<option class="extra-black">03:30PM</option>
+									<option class="extra-black">04:00PM</option>
+									<option class="extra-black">04:30PM</option>
+									<option class="extra-black">05:00PM</option>
+									<option class="extra-black">05:30PM</option>
+									<option class="extra-black">06:00PM</option>
+									<option class="extra-black">06:30PM</option>
+									<option class="extra-black">07:00PM</option>
+									<option class="extra-black">07:30PM</option>
+									<option class="extra-black">08:00PM</option>
+									<option class="extra-black">08:30PM</option>
+									<option class="extra-black">09:00PM</option>
+									<option class="extra-black">09:30PM</option>
+									<option class="extra-black">10:00PM</option>
+									<option class="extra-black">10:30PM</option>
+									<option class="extra-black">11:00PM</option>
+									<option class="extra-black">11:30PM</option>
+
+
+
+								</select>
+							</div>
+							<p>
+							</p>
+							<div id="time_selection" class="select-2 time_selection">
+								<select class="form-control time-selection" onChange="refresh_fares();"
+									name="typ">
+
+									<option class="extra-black">Micro</option>
+									<option class="extra-black">SUV</option>
+									<option class="extra-black">Sedan</option>
+									<option class="extra-black">Lux</option>
+									<option class="extra-black">Mini</option>
+								</select>
+							</div>
+							<p>
+							</p>
+
+
+							<div class="form-group">
+
+								<button class="btn btn-default btn-lg btn-block text-center text-uppercase">Make
+									reservation</button>
+
+							</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End banner Area -->
+
+	<!-- Start home-about Area -->
+	<section class="home-about-area section-gap">
+		<div class="container">
+			<div class="row align-items-center">
+
+				<div class="col-lg-6 about-right">
+					<h1>Pricing.
+						<p></p>
+						Base price
+						<p></p>
+						Micro-₹35.
+						<p></p>
+						Mini-₹35
+						<p></p>
+						LUX-₹50
+						<p></p>
+						Sedan-₹40
+						<p></p>
+						SUV-₹45
+						<P></P>
+						₹12 for every successive kilometer.
+					</h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End home-about Area -->
+
+	
+
+
+
+
+	<!-- Start home-calltoaction Area -->
+	<section class="home-calltoaction-area relative">
+		<div class="container">
+			<div class="overlay overlay-bg"></div>
+			<div class="row align-items-center section-gap">
+				<div class="col-lg-8">
+					<h1>Experience Great Support</h1>
+				</div>
+				<div class="col-lg-4 btn-left">
+					<a href="#" class="primary-btn">Reach Our Support Team</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End home-calltoaction Area -->
+
+
+
+	<!-- start footer Area -->
+	<footer class="footer-area section-gap">
+		<div class="container">
+			<div class="row">
+
+				<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+					<div class="single-footer-widget">
+						<h6>Follow Us</h6>
+						<p>Let us be social</p>
+
+					</div>
+				</div>
+				<div class="col-lg-4  col-md-6 col-sm-6">
+					<div class="single-footer-widget">
+						<h6>Newsletter</h6>
+						<p>Stay update with our latest</p>
+						<div class="" id="mc_embed_signup">
+							<form target="_blank"
+								action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01"
+								method="get" class="form-inline">
+								<input class="form-control" name="EMAIL" placeholder="Enter Email"
+									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Email '"
+									required="" type="email">
+								<button class="click-btn btn btn-default"><span
+										class="lnr lnr-arrow-right"></span></button>
+								<div style="position: absolute; left: -5000px;">
+									<input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+										type="text">
+								</div>
+
+								<div class="info"></div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<p class="mt-80 mx-auto footer-text col-lg-12">
+
+					Copyright &copy; GoCabs
+					<script>document.write(new Date().getFullYear());</script> </a>
+
+				</p>
+			</div>
+		</div>
+
+	</footer>
+	<!-- End footer Area -->
+
+	<script src="{% static "Dash/js/vendor/jquery-2.2.4.min.js" %}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="{% static "Dash/js/vendor/bootstrap.min.js" %}"></script>
+	
+	<script src="{% static "Dash/js/easing.min.js" %}"></script>
+	<script src="{% static "Dash/js/hoverIntent.js" %}"></script>
+	<script src="{% static "Dash/js/superfish.min.js" %}"></script>
+	<script src="{% static "Dash/js/jquery.ajaxchimp.min.js" %}"></script>
+	<script src="{% static "Dash/js/jquery.magnific-popup.min.js" %}"></script>
+	<script src="{% static "Dash/js/jquery-ui.js" %}"></script>
+	<script src="{% static "Dash/js/jquery.nice-select.min.js" %}"></script>
+	<script src="{% static "Dash/js/mail-script.js" %}"></script>
+	<script src="{% static "Dash/js/main.js" %}"></script>
+</body>
+
+</html>

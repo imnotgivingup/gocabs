@@ -1,0 +1,270 @@
+﻿<!DOCTYPE html>
+<!--[if lt IE 9 ]><html class="no-js oldie" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="no-js oldie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+
+    <!--- basic page needs
+   ================================================== -->
+    <meta charset="utf-8">
+    <title>Go Cabs.</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {% load staticfiles %}
+    <!-- mobile specific metas
+   ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS
+   ================================================== -->
+    <link rel="stylesheet" href="{% static "Home page/css/base.css" %}">
+    <link rel="stylesheet" href="{% static "Home page/css/vendor.css" %}">
+    <link rel="stylesheet" href="{% static "Home page/css/main.css" %}">
+
+    <!-- script
+   ================================================== -->
+    <script src="{% static "Home page/js/modernizr.js" %}"></script>
+    <script src="{% static "Home page/js/pace.min.js" %}"></script>
+
+    <!-- favicons
+	================================================== -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- header 
+   ================================================== -->
+   <header id="header" class="row">   
+
+   		<div class="header-logo">
+	        <a href="{% url "GoCabs:index" %}">Go Cabs.</a>
+	    </div>
+
+	   	<nav id="header-nav-wrap">
+			<ul class="header-main-nav">
+				<li class="current"><a class="smoothscroll"  href="#home" title="home">Home</a></li>
+                <li><a class="smoothscroll"  href="#about" title="about">About</a></li>
+                
+					
+            </ul>
+            <a href="{% url "GoCabs:login" %}" title="login" class="button button-sec cta">Login</a>
+            <a href="{% url "GoCabs:signup" %}" title="sign-up" class="button button-primary cta">Sign Up</a>
+		</nav>
+
+		<a class="header-menu-toggle" href="#"><span>Menu</span></a>    	
+   	
+   </header> <!-- /header -->
+
+
+   <!-- home
+   ================================================== -->
+   <section id="home" data-parallax="scroll" data-image-src="{% static "Home page/images/hero-bg.jpg" %}" data-natural-width=3000 data-natural-height=2000>
+
+        <div class="overlay"></div>
+        <div class="home-content">        
+
+            <div class="row contents">                     
+                <div class="home-content-left">
+
+                    <h3 data-aos="fade-up">Welcome to Go Cabs.</h3>
+
+                    <h1 data-aos="fade-up">
+                        Book your cabs on the Go. <br>
+                        Fast and secure,<br>
+                        Speedy and tidy.
+                    </h1>
+
+                                                           
+
+                </div>
+
+                
+            </div>
+
+        </div> <!-- end home-content -->
+
+        <div class="home-scrolldown">
+            <a href="#about" class="scroll-icon smoothscroll">
+                <span>Scroll Down</span>
+                <i class="icon-arrow-right" aria-hidden="true"></i>
+            </a>
+        </div>
+
+    </section> <!-- end home -->  
+
+
+    <!-- about
+    ================================================== -->
+    <section id="about">
+
+        <div class="row about-intro">
+
+            <div class="col-four">
+                <h1 class="intro-header" data-aos="fade-up">About Our App</h1>
+            </div>
+            <div class="col-eight">
+                <p class="lead" data-aos="fade-up">
+                    Go cabs is cab booking software used to connect you to the nearest drivers and take you to your desired destination as fast as possible. Our drivers are always on the move and will respond almost immediately on request to supply customers.
+                </p>
+            </div>                       
+            
+        </div>
+
+        
+
+        <div class="row about-how">
+          
+            <h1 class="intro-header" data-aos="fade-up">How The App Works?</h1>           
+
+            <div class="about-how-content" data-aos="fade-up">
+                <div class="about-how-steps block-1-2 block-tab-full group">
+
+                    <div class="bgrid step" data-item="1">
+                        <h3>Sign-Up</h3>
+                        <p>Register with a valid email Address and create a profile. Set up various payment methods and regularly visited addresses.
+                        </p> 
+                    </div>
+
+                    <div class="bgrid step" data-item="2">
+                        <h3>Search</h3>
+                        <p>Enter your desired destination and pickup location, we will search for available cabs and respond ASAP with driver details. 
+                        </p> 
+                    </div>               
+               
+                    <div class="bgrid step" data-item="3">
+                        <h3>Ride</h3>
+                        <p>Wait for the driver at the respective pickup location and hop in the car to jump to your destination. 
+                        </p> 
+                    </div>
+
+                    <div class="bgrid step" data-item="4">
+                        <h3>Review</h3>
+                        <p>Once the ride is complete, you can review the driver and support the app! 
+                        </p> 
+                    </div>  
+
+                </div>           
+           </div> <!-- end about-how-content -->
+
+        </div> <!-- end about-how -->
+
+              
+        
+    </section> <!-- end about -->  
+   
+
+ 
+
+
+    <!-- footer
+    ================================================== -->
+    <footer>
+
+        <div class="footer-main">
+            <div class="row">  
+
+                <div class="col-three md-1-3 tab-full footer-info">            
+
+                    <div class="footer-logo"></div>
+
+                    
+                    
+                    
+                </div> <!-- end footer-info -->
+
+                <div class="col-three md-1-3 tab-1-2 mob-full footer-contact">
+
+                    <h4>Contact</h4>
+
+                    <p>
+                    SKCHEC<br>
+                    Bengaluru, Karnataka<br>
+                    India<br>		        
+                    </p>
+
+                    <p>
+                    someone@gocabs.com <br>
+                    Phone: 9980901901
+                        
+                    </p>                    
+
+                </div> <!-- end footer-contact -->  
+
+                <div class="col-two md-1-3 tab-1-2 mob-full footer-site-links">
+
+                    <h4>Site Links</h4>
+
+                    <ul class="list-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>	      		
+                            
+                </div> <!-- end footer-site-links --> 
+
+                <div class="col-four md-1-2 tab-full footer-subscribe">
+
+                    <h4>Our Newsletter</h4>
+
+                    <p>Please submit your email adress to keep in touch with latest offers and news.</p>
+
+                    <div class="subscribe-form">
+                
+                        <form id="mc-form" class="group" novalidate="true">
+
+                            <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required=""> 
+                
+                            <input type="submit" name="subscribe" value="Send">
+                
+                            <label for="mc-email" class="subscribe-message"></label>
+                
+                        </form>
+
+                    </div>	      		
+                            
+                </div> <!-- end footer-subscribe -->         
+
+            </div> <!-- /row -->
+        </div> <!-- end footer-main -->
+
+
+      <div class="footer-bottom">
+
+      	<div class="row">
+
+      		<div class="col-twelve">
+	      		<div class="copyright">
+		         	<span>© Copyright Go Cabs 2020.</span> 
+		         			         	
+		         </div>
+
+		         <div id="go-top">
+		            <a class="smoothscroll" title="Back to Top" href="#top"><i class="icon-arrow-up"></i></a>
+		         </div>         
+	      	</div>
+
+      	</div> <!-- end footer-bottom -->     	
+
+      </div>
+
+    </footer>
+
+    <div id="preloader"> 
+    	<div id="loader"></div>
+    </div>  
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static "Home page/js/jquery-2.1.3.min.js" %}"></script>
+    <script src="{% static "Home page/js/plugins.js" %}"></script>
+    <script src="{% static "Home page/js/main.js" %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<style>
+		ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-color: #111;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+	#rides {
+		margin-top: 7%;
+		font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	#rides td,
+	#rides th {
+		border: 1px solid #ddd;
+		padding: 8px;
+		background-color: aliceblue
+	}
+
+
+	#rides tr:hover {
+		background-color: #ddd;
+	}
+
+	#rides th {
+		padding-top: 12px;
+		padding-bottom: 12px;
+		text-align: left;
+		background-color: #4CAF50;
+		color: white;
+	}
+	
+	.button4 {
+  	background-color: white;
+  	color: black;
+  	border: 2px solid #e7e7e7;
+	}
+
+	.button4:hover {background-color: #e7e7e7;}
+
+	.button {
+  	background-color: #4CAF50; /* Green */
+  	border: none;
+  	color: white;
+  	padding: 16px 32px;
+  	text-align: center;
+  	text-decoration: none;
+  	display: inline-block;
+  	font-size: 16px;
+ 	margin: 4px 2px;
+	-webkit-transition-duration: 0.4s; /* Safari */
+  	transition-duration: 0.4s;
+  	cursor: pointer;
+	}
+</style>
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+	<title>Booking Form HTML Template</title>
+
+	<!-- Bootstrap -->
+	<link type="text/css" rel="stylesheet" href="{% static "Reviews/css/bootstrap.min.css" %}" />
+
+	<!-- Custom stlylesheet -->
+	<link type="text/css" rel="stylesheet" href="{% static "Reviews/css/style.css" %}"  />
+
+	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+</head>
+
+<body style="background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url(/statics/Reviews/img/background.jpg) repeat;">
+	<ul>
+			<li><a href="../dash">Home</a></li>
+			<li style="float:right"><a class="active" href="{% url "GoCabs:index"%}">Logout</a></li>
+		  </ul>
+	<h1 style="margin-left: 47%;color: #ffffff;">Rides</h1>
+
+
+
+
+	<div style="margin-right:100px;margin-left:100px">
+		<table id='rides'>
+			<tr>
+				<th>Sr No</th>
+				<th>Source</th>
+				<th>Destination</th>
+				<th>Date</th>
+				<th>Status/Amt</th>
+				<th>Delete</th>
+			</tr>
+			{% for k in data %}
+			<tr>
+				<td width='2%'>{{k.0}}</td>
+				<td width='10%'>{{k.1}}</td>
+				<td width='10%'>{{k.2}}</td>
+				<td width='10%'>{{k.6}}</td>
+				<td width='10%'>{{k.3}} Rs {{k.4}}</td>
+				<td width='1%'>
+					<form name="f1" action="#" method="POST">
+						{% csrf_token %}
+						<button type="submit" name="edit" value="{{k.10}}">Delete</button>
+					</form>
+				</td>
+			</tr>
+			{% endfor %}
+
+		</table>
+		<p style="color:#ffffff">
+			Note: Deleting incomplete rides will cancel them.
+		</p>
+	</div>
+	<form method="get" action="../reviews">
+		{% csrf_token %}
+		<button class="button button4" style="margin-top:5%;margin-left:45%;" action="../reviews" type='submit'>Go to Reviews</button>
+	</form>
+</body>
+
+</html>

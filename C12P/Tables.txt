@@ -1,0 +1,75 @@
+CREATE TABLE Customer_detail
+(
+Customer_Id integer primary key not null,
+C_Name varchar(200) not null,
+C_Phone_no varchar(15) not null,
+C_Mail_Id varchar(100) not null,
+H_address varchar(1000) not null,
+Password varchar(50) not null,
+C_Gender varchar(50) not null,
+C_DOB date not null
+);
+
+CREATE TABLE Cab_detail
+(
+Cab_Id integer primary key not null,
+Cab_number varchar(50) not null,
+Car_model varchar(50) not null,
+Car_type varchar(50) not null
+);
+
+CREATE TABLE Driver_detail
+(
+Driver_Id integer primary key not null,
+D_Name varchar(200) not null,
+D_Phone_no varchar(15) not null,
+D_Mail_Id varchar(100) not null,
+Experience integer not null,
+Age integer not null,
+Rides_completed integer not null,
+D_DOB date not null,
+D_Gender varchar(50) not null,
+License_no varchar(100) not null,
+Region varchar(500) not null,
+Cab_Id varchar(50),
+Active integer not null,
+foreign key (Cab_Id) references Cab_detail(Cab_Id) on update cascade on delete cascade
+);
+
+CREATE TABLE Ride
+(
+Ride_no integer primary key not null,
+Driver_Id varchar(50),
+Customer_Id varchar(50) ,
+Source varchar(200) not null,
+Destinantion varchar(200) not null,
+Status varchar(100) not null,
+Amount decimal(6,2) not null,
+Booking_time time not null,
+Date_book date not null,
+Reviewed integer not null,
+foreign key (Driver_Id) references Driver_detail(Driver_Id) on update cascade on delete cascade,
+foreign key (Customer_Id)references Customer_detail(Customer_Id) on update cascade on delete cascade
+);
+
+CREATE TABLE Review
+(
+Review_no integer primary key not null,
+Customer_Id varchar(50),
+Driver_Id varchar(50),
+Ride_no varchar(20),
+Stars decimal(4,2) check(stars<=5),
+foreign key (Customer_Id) references Customer_detail(Customer_Id) on update cascade on delete cascade,
+foreign key (Driver_Id) references Driver_detail(Driver_Id) on update cascade on delete cascade,
+foreign key (Ride_no) references Ride(Ride_no) on update cascade on delete cascade
+);
+
+CREATE TABLE Cab_location
+(
+Serial_no integer primary key not null,
+Cab_Id varchar(50)  not null,
+Area varchar(5000) not null,
+Zone varchar(50) not null,
+On_trip_status varchar(100) not null,
+foreign key (Cab_Id) references Cab_detail(Cab_Id) on update cascade on delete cascade
+);
